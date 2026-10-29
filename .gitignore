@@ -1,0 +1,15 @@
+node_modules/
+dist/
+*.zip
+*.local
+.env
+.env.*
+!.env.example
+
+# Token do Kommo: nunca versionar
+kommo-config.php
+
+.DS_Store
+Thumbs.db
+.vite/
+*.tsbuildinfo

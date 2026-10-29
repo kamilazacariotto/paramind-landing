@@ -1,0 +1,38 @@
+{
+  "name": "paramind-landing",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Landing pages da Paramind (Felipe Oliveira): três versões para teste A/B, cada uma com build próprio.",
+  "scripts": {
+    "dev": "vite --mode apresentacao",
+    "dev:v1": "vite --mode v1",
+    "dev:v2": "vite --mode v2",
+    "dev:v3": "vite --mode v3",
+    "build": "npm run build:v1 && npm run build:v2 && npm run build:v3 && npm run build:apresentacao",
+    "build:v1": "vite build --mode v1",
+    "build:v2": "vite build --mode v2",
+    "build:v3": "vite build --mode v3",
+    "build:apresentacao": "vite build --mode apresentacao",
+    "preview": "vite preview --mode apresentacao",
+    "preview:v1": "vite preview --mode v1",
+    "preview:v2": "vite preview --mode v2",
+    "preview:v3": "vite preview --mode v3",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

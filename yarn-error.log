@@ -1,0 +1,61 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+
+PATH: 
+  c:\Users\Kamis\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\Kamis\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Program Files\Microsoft MPI\Bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Users\Kamis\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin\;C:\Users\Kamis\AppData\Local\Programs\Python\Python38\Scripts;;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\GitHub CLI\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\WSL\;C:\Users\Kamis\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Kamis\AppData\Local\Programs\Python\Python312\;C:\Users\Kamis\.local\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Kamis\AppData\Local\Microsoft\WindowsApps;C:\Users\Kamis\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Kamis\.dotnet\tools;C:\Program Files\Azure Data Studio\bin;C:\Users\Kamis\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\Kamis\AppData\Local\Yarn\bin;C:\Users\Kamis\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\Kamis\AppData\Local\Microsoft\WinGet\Links;C:\Users\Kamis\AppData\Local\Microsoft\WinGet\Packages\Genymobile.scrcpy_Microsoft.Winget.Source_8wekyb3d8bbwe\scrcpy-win64-v4.1;
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  22.13.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'G:\Projetos\paramind-landing\node_modules\@rollup\rollup-win32-x64-msvc\rollup.win32-x64-msvc.node'
+
+npm manifest: 
+  {
+    "name": "paramind-landing",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Landing pages da Paramind (Felipe Oliveira): três versões para teste A/B, cada uma com build próprio.",
+    "scripts": {
+      "dev": "vite --mode v1",
+      "dev:v1": "vite --mode v1",
+      "dev:v2": "vite --mode v2",
+      "dev:v3": "vite --mode v3",
+      "build": "npm run build:v1 && npm run build:v2 && npm run build:v3",
+      "build:v1": "vite build --mode v1",
+      "build:v2": "vite build --mode v2",
+      "build:v3": "vite build --mode v3",
+      "preview:v1": "vite preview --mode v1",
+      "preview:v2": "vite preview --mode v2",
+      "preview:v3": "vite preview --mode v3",
+      "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+      "react": "^18.3.1",
+      "react-dom": "^18.3.1"
+    },
+    "devDependencies": {
+      "@types/node": "^22.20.1",
+      "@types/react": "^18.3.12",
+      "@types/react-dom": "^18.3.1",
+      "@vitejs/plugin-react": "^4.3.4",
+      "typescript": "^5.7.2",
+      "vite": "^6.0.5"
+    },
+    "engines": {
+      "node": ">=20"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

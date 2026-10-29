@@ -1,0 +1,11 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import { Page } from "../v2";
+
+// Versão 2 dentro da apresentação: sem iniciarTracking(), então GTM e Clarity não carregam.
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <Page />
+  </StrictMode>,
+);

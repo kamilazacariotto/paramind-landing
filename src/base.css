@@ -1,0 +1,528 @@
+/*
+ * Paramind — base comum às três versões.
+ * Mobile first: tudo nasce na largura de celular e cresce com min-width.
+ * Nenhuma media query max-width. Breakpoints: 640px e 900px.
+ */
+
+:root {
+  --pm-bg: #111216;
+  --pm-bg-2: #0c0d10;
+  --pm-surface: #191a20;
+  --pm-surface-2: #15161b;
+  --pm-line: #26272e;
+  --pm-line-2: #2a2b33;
+  --pm-claro: #ededed;
+  --pm-branco: #fff;
+  --pm-roxo: #a05cbf;
+  --pm-roxo-escuro: #7d3f9b;
+  --pm-verde: #00b189;
+  --pm-verde-hover: #00c597;
+  --pm-verde-escuro: #009b78;
+  --pm-texto: #c9cad0;
+  --pm-texto-2: #b4b5bc;
+  --pm-muted: #9a9ba3;
+  --pm-ink: #111216;
+  --pm-ink-2: #3a3b42;
+  --pm-ink-3: #55565d;
+
+  --pm-sans: "Poppins", system-ui, sans-serif;
+  --pm-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --pm-gutter: 16px;
+  --pm-secao-y: 64px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --pm-gutter: 24px;
+    --pm-secao-y: 88px;
+  }
+}
+
+@media (min-width: 900px) {
+  :root {
+    --pm-secao-y: 104px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--pm-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+video,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+.pm-page {
+  overflow-x: clip;
+  /* espaço para a barra fixa do WhatsApp no celular não cobrir o rodapé */
+  padding-bottom: 80px;
+}
+
+@media (min-width: 760px) {
+  .pm-page {
+    padding-bottom: 0;
+  }
+}
+
+.pm-wrap {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--pm-gutter);
+}
+
+.pm-secao {
+  padding: var(--pm-secao-y) 0;
+}
+
+.pm-mono {
+  font-family: var(--pm-mono);
+}
+
+.pm-destaque {
+  color: var(--pm-roxo);
+}
+
+/* imagens <picture> preenchem o contêiner */
+.pm-foto {
+  position: absolute;
+  inset: 0;
+}
+
+.pm-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- botão principal (formato muda por versão) ---------- */
+
+.pm-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 56px;
+  padding: 16px 24px;
+  border: 0;
+  background: var(--pm-verde);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.3;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.pm-btn:hover {
+  background: var(--pm-verde-hover);
+  color: #fff;
+}
+
+.pm-btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+@media (min-width: 640px) {
+  .pm-btn {
+    display: inline-flex;
+    width: auto;
+    font-size: 17px;
+    padding: 18px 30px;
+  }
+}
+
+/* ---------- vídeos de resultado ---------- */
+
+/* No celular, carrossel com scroll-snap; três vídeos 9:16 empilhados
+   ocupariam quatro telas. A partir de 640px viram grade de 3. */
+.pm-videos {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 72%;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin: 0 calc(var(--pm-gutter) * -1);
+  padding: 0 var(--pm-gutter) 4px;
+  scrollbar-width: none;
+}
+
+.pm-videos::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .pm-videos {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+}
+
+.pm-video {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: var(--pm-surface);
+  scroll-snap-align: center;
+}
+
+.pm-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pm-video__play {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(17, 18, 22, 0) 45%, rgba(17, 18, 22, 0.85));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pm-video__play:hover {
+  background: linear-gradient(180deg, rgba(160, 92, 191, 0.15) 0%, rgba(17, 18, 22, 0.9));
+}
+
+.pm-video__icone {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--pm-roxo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.pm-video__icone svg {
+  margin-left: 4px;
+}
+
+.pm-video__rotulo {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--pm-mono);
+  font-size: 12px;
+  color: #fff;
+}
+
+.pm-video__rotulo span:last-child {
+  opacity: 0.8;
+}
+
+/* ---------- formulário ---------- */
+
+.pm-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.pm-form-erro {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #ff8a8a;
+}
+
+.pm-form-erro a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* ---------- WhatsApp fixo (só celular) ---------- */
+
+.pm-flutuante {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: var(--pm-verde);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.pm-flutuante:hover {
+  color: #fff;
+}
+
+@media (min-width: 760px) {
+  .pm-flutuante {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- rodapé (comum; cada versão ajusta as cores --pm-rodape-*) ---------- */
+
+.pm-rodape {
+  --pm-rodape-bg: var(--pm-bg);
+  --pm-rodape-link: var(--pm-roxo);
+  --pm-rodape-fraco: var(--pm-muted);
+  background: var(--pm-rodape-bg);
+  color: #fff;
+  border-top: 1px solid #24252c;
+  padding: 40px 0 32px;
+}
+
+.pm-rodape a,
+.pm-rodape button {
+  color: var(--pm-rodape-link);
+}
+
+.pm-rodape a:hover,
+.pm-rodape button:hover {
+  color: var(--pm-verde);
+}
+
+.pm-rodape__grade {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+@media (min-width: 640px) {
+  .pm-rodape__grade {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.pm-rodape__marca {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--pm-rodape-fraco);
+}
+
+.pm-rodape__marca img {
+  height: 30px;
+  width: auto;
+  align-self: flex-start;
+}
+
+.pm-rodape__contato {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  .pm-rodape__contato {
+    align-items: flex-end;
+  }
+}
+
+.pm-rodape__legal {
+  margin-top: 32px;
+  padding-top: 24px !important;
+  border-top: 1px solid #24252c;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--pm-rodape-fraco);
+}
+
+.pm-rodape__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 13px;
+}
+
+.pm-rodape__links button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.pm-rodape .pm-rodape__links a,
+.pm-rodape .pm-rodape__links button {
+  color: var(--pm-rodape-fraco);
+}
+
+.pm-rodape .pm-rodape__links a:hover,
+.pm-rodape .pm-rodape__links button:hover {
+  color: #fff;
+}
+
+@media (min-width: 900px) {
+  .pm-rodape__legal {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* ícones de redes: alvo de toque de 44px */
+.pm-redes {
+  display: flex;
+  gap: 10px;
+}
+
+.pm-redes a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #2c2d35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.pm-rodape .pm-redes a {
+  color: #fff;
+}
+
+.pm-rodape .pm-redes a:hover {
+  color: #fff;
+  border-color: var(--pm-verde);
+  background: var(--pm-verde);
+}
+
+/* ---------- banner de cookies ---------- */
+
+.pm-cookies {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  z-index: 60;
+  background: #1b1c22;
+  color: #e6e6ea;
+  border: 1px solid #2c2d35;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.pm-cookies a {
+  color: #c9a3dc;
+  text-decoration: underline;
+}
+
+.pm-cookies__acoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.pm-cookies button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pm-cookies__recusar {
+  background: none;
+  border: 1px solid #3a3b42;
+  color: #e6e6ea;
+}
+
+.pm-cookies__aceitar {
+  background: var(--pm-verde);
+  border: 0;
+  color: #fff;
+}
+
+.pm-cookies__aceitar:hover {
+  background: var(--pm-verde-hover);
+}
+
+@media (min-width: 640px) {
+  .pm-cookies {
+    left: auto;
+    right: 24px;
+    bottom: 24px;
+    max-width: 440px;
+  }
+}

@@ -1,0 +1,5 @@
+# Se o kommo-config.php acabar nesta pasta, ele nunca é servido direto.
+<Files "kommo-config.php">
+  Require all denied
+</Files>
+Options -Indexes

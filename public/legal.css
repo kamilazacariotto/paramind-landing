@@ -1,0 +1,228 @@
+/* Páginas legais (política e termos). Mobile first, leitura confortável. */
+
+:root {
+  --ink: #111216;
+  --texto: #3a3b42;
+  --muted: #6a6b73;
+  --linha: #dcdcde;
+  --roxo: #7d3f9b;
+  --verde: #00b189;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f6f6f7;
+  color: var(--texto);
+  font-family: "Poppins", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--roxo);
+}
+
+a:hover {
+  color: var(--verde);
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+header {
+  background: #fff;
+  border-bottom: 1px solid var(--linha);
+}
+
+header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+header img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+header a.voltar {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+main {
+  padding: 40px 0 56px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-size: clamp(28px, 4vw + 12px, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.atualizacao {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.empresa {
+  margin: 0 0 32px;
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid var(--linha);
+  border-radius: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.empresa strong {
+  color: var(--ink);
+}
+
+h2 {
+  margin: 36px 0 10px;
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+p,
+ul {
+  margin: 0 0 14px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+/* No celular cada linha da tabela vira um cartão (sem rolagem lateral);
+   a partir de 560px volta a ser tabela. */
+table {
+  display: block;
+  width: 100%;
+  margin: 0 0 14px;
+  font-size: 14px;
+}
+
+thead {
+  display: none;
+}
+
+tbody,
+tr,
+td {
+  display: block;
+}
+
+tr {
+  background: #fff;
+  border: 1px solid var(--linha);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--linha);
+}
+
+td:last-child {
+  border-bottom: 0;
+}
+
+td::before {
+  content: attr(data-rotulo);
+  display: block;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+th {
+  color: var(--ink);
+}
+
+@media (min-width: 560px) {
+  table {
+    display: table;
+    border-collapse: collapse;
+    background: #fff;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tbody {
+    display: table-row-group;
+  }
+  tr {
+    display: table-row;
+    border-radius: 0;
+  }
+  th,
+  td {
+    display: table-cell;
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 12px;
+    border: 1px solid var(--linha);
+  }
+  td::before {
+    content: none;
+  }
+}
+
+footer {
+  background: var(--ink);
+  color: #9a9ba3;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+footer .wrap {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+footer a {
+  color: #c9a3dc;
+}
+
+@media (min-width: 640px) {
+  .wrap {
+    padding: 0 24px;
+  }
+  header img {
+    height: 32px;
+  }
+  main {
+    padding: 56px 0 72px;
+  }
+}
